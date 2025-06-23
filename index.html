@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyer Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Lawyer Panel</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#how-it-works">How it Works</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h1>Welcome to Lawyer Panel</h1>
+        <p>Your trusted legal partners.</p>
+        <button class="button-primary cta-button">Get Legal Help Now</button> <!-- Added button-primary -->
+    </section>
+
+    <section id="how-it-works">
+        <h2>How it Works</h2>
+        <!-- Content for How it Works section -->
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <div class="service-item">
+                <img src="https://via.placeholder.com/300x200.png?text=Credit+Payment" alt="Credit Payment Issues">
+                <h3>Credit Card Loan Issues</h3>
+                <p>If you are not able to pay your Credit Card dues and the bank is threatening and hounding you, our lawyers can evaluate the situation and assist you.</p>
+                <button class="button-primary cta-button service-cta">Get Help</button> <!-- Added button-primary -->
+            </div>
+            <div class="service-item">
+                <img src="https://via.placeholder.com/300x200.png?text=Loan+Payment" alt="Loan Payment Issues">
+                <h3>Loan Payment Issues</h3>
+                <p>We can help you find solutions to your financial difficulties and avoid becoming a willful defaulter if you have taken loans and are unable to pay back.</p>
+                <button class="button-primary cta-button service-cta">Get Help</button> <!-- Added button-primary -->
+            </div>
+            <div class="service-item">
+                <img src="https://via.placeholder.com/300x200.png?text=Recovery+Agents" alt="Recovery Agents Harassment">
+                <h3>Recovery Agents Harassment</h3>
+                <p>If you are being pestered by recovery agents, our lawyers panel can put a stop to the harassment since it is in violation of RBI rules and Supreme Court orders.</p>
+                <button class="button-primary cta-button service-cta">Get Help</button> <!-- Added button-primary -->
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <!-- Content for About Us section -->
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>Reach out to us for any legal assistance. We are here to help.</p>
+        <div class="contact-container">
+            <div class="contact-form-container">
+                <h3>Send us a Message</h3>
+                <form id="contact-form">
+                    <label for="contact-name">Name:</label>
+                    <input type="text" id="contact-name" name="name" required>
+
+                    <label for="contact-email">Email:</label>
+                    <input type="email" id="contact-email" name="email" required>
+
+                    <label for="contact-phone">Phone:</label>
+                    <input type="tel" id="contact-phone" name="phone">
+
+                    <label for="contact-subject">Subject:</label>
+                    <input type="text" id="contact-subject" name="subject" required>
+
+                    <label for="contact-message">Message:</label>
+                    <textarea id="contact-message" name="message" rows="5" required></textarea>
+
+                    <button type="submit" class="button-primary contact-submit-button">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-details">
+                <h3>Other ways to connect</h3>
+                <p><strong>Phone:</strong> <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                <p><strong>Email:</strong> <a href="mailto:contact@lawyerpanel.org">contact@lawyerpanel.org</a></p>
+                <a href="https://wa.me/1234567890" class="whatsapp-button" target="_blank">
+                    <img src="https://via.placeholder.com/24.png?text=W" alt="WhatsApp Icon"> Chat on WhatsApp
+                </a>
+                <!-- Add physical address or other details if needed -->
+                 <p>Office hours: Mon-Fri, 9 AM - 6 PM</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Lawyer Panel. All rights reserved.</p>
+    </footer>
+
+    <!-- Popup Modal for CTA -->
+    <div id="cta-popup" class="popup">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <h3>Get Legal Assistance</h3>
+            <form id="popup-form">
+                <label for="popup-name">Name:</label>
+                <input type="text" id="popup-name" name="name" required>
+                <label for="popup-email">Email:</label>
+                <input type="email" id="popup-email" name="email" required>
+                <label for="popup-phone">Phone:</label>
+                <input type="tel" id="popup-phone" name="phone" required>
+                <label for="popup-message">Message:</label>
+                <textarea id="popup-message" name="message" rows="4" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

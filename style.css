@@ -1,0 +1,565 @@
+/* Global Styles */
+:root {
+    --primary-color: #007bff; /* Example: Blue */
+    --secondary-color: #6c757d; /* Example: Gray */
+    --accent-color: #ff6f61; /* Example: Coral (for CTAs) */
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --light-gray: #f8f9fa;
+    --dark-gray: #343a40;
+    --font-main: 'Helvetica Neue', Arial, sans-serif;
+    --font-headings: 'Georgia', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* For smooth scrolling on nav clicks */
+}
+
+body {
+    font-family: var(--font-main);
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+/* Header & Navigation */
+header {
+    background: var(--dark-gray);
+    color: #fff;
+    padding: 0.8rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 2rem;
+}
+
+nav .logo {
+    font-family: var(--font-headings);
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active { /* For active link indication if using JS */
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+}
+
+/* Sections General Styling */
+section {
+    padding: 100px 2rem 4rem; /* Adjusted padding for fixed header + more bottom space */
+    min-height: 80vh;
+    text-align: center;
+}
+
+section:nth-of-type(even) { /* Alternating background for sections */
+    background-color: var(--light-gray);
+}
+
+section h1, section h2 {
+    font-family: var(--font-headings);
+    margin-bottom: 1.5rem;
+    color: var(--dark-gray);
+}
+
+section h1 { /* Typically for the #home section title */
+    font-size: 3rem;
+    line-height: 1.2;
+}
+
+section h2 { /* For other section titles */
+    font-size: 2.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 3px solid var(--accent-color);
+    display: inline-block; /* To make border only as wide as text */
+}
+
+section p {
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 1rem auto; /* Center paragraph text */
+}
+
+/* Home Section Specifics */
+#home {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1920x1080.png?text=Legal+Background') no-repeat center center/cover; /* Replace with actual image */
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#home h1 {
+    color: #fff;
+    font-size: 3.5rem;
+}
+
+#home p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+/* General Button Styling */
+.button-primary { /* New general class for primary buttons */
+    background: var(--accent-color);
+    color: white;
+    padding: 0.9rem 1.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.button-primary:hover {
+    background: #E65C50; /* Darker accent: was darken(var(--accent-color), 10%) */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* CTA-specific class - This class is primarily for JS targeting of buttons that open the popup. */
+/* It no longer needs to carry all the base button styles if .button-primary is used alongside it. */
+.cta-button {
+    /* Specific styles for CTA buttons if they need to differ from button-primary. */
+    /* For example, if they needed a different size or an icon. */
+    /* If no difference, this class selector can be minimal or removed from CSS if JS targets .button-primary for popups instead. */
+}
+
+/* Styling for the contact form submit button specifically */
+.contact-submit-button {
+    /* This will inherit from .button-primary if both classes are on the element */
+    /* Add specific overrides if needed */
+    padding: 0.8rem 1.5rem; /* Example: slightly different padding than main CTAs */
+}
+
+/* Footer */
+footer {
+    background: var(--dark-gray);
+    color: #ccc;
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 0.9rem;
+}
+
+/* Popup styles */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px); /* Optional: for frosted glass effect */
+}
+
+.popup-content {
+    background-color: #fff;
+    margin: 10% auto; /* Adjusted for better vertical centering */
+    padding: 25px 30px;
+    border: none;
+    width: 90%;
+    max-width: 550px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: fadeInPopup 0.3s ease-out;
+}
+
+@keyframes fadeInPopup {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-button {
+    color: #888;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--dark-gray);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.popup-content h3 {
+    font-family: var(--font-headings);
+    color: var(--dark-gray);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+#popup-form label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    text-align: left;
+    font-weight: bold;
+    color: #555;
+}
+
+#popup-form input,
+#popup-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#popup-form input:focus,
+#popup-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+#popup-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+#popup-form button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+#popup-form button:hover {
+    background-color: #E65C50; /* Darker accent */
+}
+
+/* Services Section Styling */
+.services-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    justify-content: space-around; /* Distribute items evenly */
+    gap: 2rem; /* Space between service items */
+    margin-top: 2rem;
+}
+
+.service-item {
+    background-color: #fff; /* White background for each service card */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    text-align: left; /* Align text to the left within the card */
+    width: calc(33.333% - 2rem); /* Three items per row, accounting for gap */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.service-item img {
+    width: 100%;
+    max-height: 180px; /* Control image height */
+    object-fit: cover; /* Ensure image covers the area nicely */
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.service-item h3 {
+    font-family: var(--font-headings);
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.service-item p {
+    font-size: 0.95rem;
+    color: #555;
+    flex-grow: 1; /* Make paragraph take available space, pushing button down */
+    margin-bottom: 1rem; /* Space before the button */
+}
+
+.service-item .cta-button { /* Specific styling for CTAs within service items */
+    align-self: flex-start; /* Align button to the left */
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    margin-top: auto; /* Push button to the bottom of the card */
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) { /* Adjust for tablets */
+    .service-item {
+        width: calc(50% - 1.5rem); /* Two items per row */
+    }
+}
+
+@media (max-width: 768px) { /* Adjust for mobile */
+    .service-item {
+        width: 100%; /* Full width for service items on small screens */
+        margin-bottom: 1.5rem; /* Add some space between stacked items */
+    }
+
+    nav {
+        flex-direction: column;
+        padding: 0 1rem;
+    }
+
+    nav .logo {
+        margin-bottom: 0.8rem;
+        font-size: 1.6rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 0.8rem 0;
+    }
+
+    nav ul li a {
+        padding: 0.5rem;
+    }
+
+    section {
+        padding: 80px 1rem 3rem;
+    }
+
+    section h1 {
+        font-size: 2.2rem;
+    }
+    #home h1 {
+        font-size: 2.8rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+
+    section p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        font-size: 1.1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .popup-content {
+        width: 90%;
+        margin: 15% auto; /* More margin for smaller screens */
+        padding: 20px;
+    }
+
+    .popup-content h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav .logo {
+        font-size: 1.5rem;
+    }
+    #home h1 {
+        font-size: 2.2rem;
+    }
+    #home p {
+        font-size: 1.1rem;
+    }
+    section h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Contact Section Styling */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.contact-form-container {
+    flex: 2; /* Takes more space */
+    min-width: 300px; /* Minimum width before wrapping */
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.contact-form-container h3, .contact-details h3 {
+    font-family: var(--font-headings);
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.6rem;
+}
+
+#contact-form label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 0.15rem rgba(0,123,255,.2);
+}
+
+#contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#contact-form button {
+    margin-top: 1.5rem;
+    width: auto; /* Button width based on content */
+    padding: 0.8rem 1.5rem; /* Adjust padding */
+}
+
+.contact-details {
+    flex: 1;
+    min-width: 280px;
+    padding: 1.5rem;
+    background: var(--light-gray); /* Slightly different background for distinction */
+    border-radius: 8px;
+}
+
+.contact-details p {
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    color: var(--text-color);
+}
+.contact-details p strong {
+    color: var(--dark-gray);
+}
+
+.contact-details a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+    color: #0056b3; /* Darker primary: was darken(var(--primary-color), 10%) */
+    text-decoration: underline;
+}
+
+.whatsapp-button {
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    background-color: #25D366; /* WhatsApp green */
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border-radius: 25px; /* Pill shape */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1rem;
+}
+
+.whatsapp-button img {
+    margin-right: 0.5rem;
+    vertical-align: middle; /* Better alignment if needed */
+    width: 20px; /* Adjust as needed */
+    height: 20px; /* Adjust as needed */
+}
+
+.whatsapp-button:hover {
+    background-color: #1EBE57; /* Darker WhatsApp green */
+    transform: scale(1.05);
+    color: white; /* Ensure text color remains white on hover */
+    text-decoration: none; /* Remove underline on hover */
+}
+
+/* Responsive adjustments for Contact Section */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+    .contact-form-container, .contact-details {
+        width: 100%; /* Full width on smaller screens */
+    }
+    #contact-form button {
+        width: 100%; /* Full width button on small screens */
+    }
+}
