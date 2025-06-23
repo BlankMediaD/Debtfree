@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debtfree Lawyer Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="logo">Debtfree</div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#how">How it works</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>Debt Relief from Legal Experts</h1>
+      <p>Get professional help to resolve your credit and loan issues.</p>
+      <a href="#contact" class="btn primary">Contact Us</a>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container">
+      <h2>How it Works</h2>
+      <ol>
+        <li>Share your problem.</li>
+        <li>We analyze your case.</li>
+        <li>Get legal assistance.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <img src="img/credit-card.svg" alt="Credit Card Loan Issues">
+          <h3>Credit Card Loan Issues</h3>
+          <p>If you are not able to pay your Credit Card dues and the bank is threatening and hounding you, our lawyers can evaluate the situation and assist you.</p>
+          <button class="btn cta" data-service="Credit Card Loan Issues">Get Help</button>
+        </div>
+        <div class="service-card">
+          <img src="img/loan.svg" alt="Loan Payment Issues">
+          <h3>Loan Payment Issues</h3>
+          <p>We can help you find solutions to your financial difficulties and avoid becoming a willful defaulter if you have taken loans and are unable to pay back.</p>
+          <button class="btn cta" data-service="Loan Payment Issues">Get Help</button>
+        </div>
+        <div class="service-card">
+          <img src="img/harassment.svg" alt="Recovery Agents Harassment">
+          <h3>Recovery Agents Harassment</h3>
+          <p>If you are being pestered by recovery agents, our lawyers panel can put a stop to the harassment since it is in violation of RBI rules and Supreme Court orders.</p>
+          <button class="btn cta" data-service="Recovery Agents Harassment">Get Help</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>Debtfree is a team of experienced lawyers helping you handle debt and recovery issues legally and effectively.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form id="contactForm">
+        <label>Name
+          <input type="text" name="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Message
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="btn primary">Submit</button>
+      </form>
+      <div class="whatsapp">
+        <a href="https://wa.me/1234567890" target="_blank">Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Debtfree. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span id="popup-close">&times;</span>
+      <h3 id="popup-title">Get Help</h3>
+      <form id="popupForm">
+        <input type="hidden" name="service" id="serviceField">
+        <label>Name
+          <input type="text" name="name" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" required>
+        </label>
+        <label>Message
+          <textarea name="message" rows="4" required></textarea>
+        </label>
+        <button type="submit" class="btn primary">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
